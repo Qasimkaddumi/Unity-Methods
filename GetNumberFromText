@@ -1,0 +1,25 @@
+using System.Text;
+
+ public static int GetNumberFromText(string text, bool isParenthesesIncluded = false)
+        {
+            char[] characters = text.ToCharArray();
+            StringBuilder finalString = new StringBuilder();
+
+            for (int i = 0; i < characters.Length; i++)
+            {
+                char currentChar = characters[i];
+
+                if (currentChar == '(' && !isParenthesesIncluded)
+                {
+                    break;
+                }
+
+                if (char.IsDigit(currentChar))
+                {
+                    finalString.Append(currentChar);
+                }
+            }
+
+            int.TryParse(finalString.ToString(), out int number);
+            return number;
+        }
